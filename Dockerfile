@@ -1,7 +1,10 @@
 # Use lightweight Python image
-FROM python:3.10-slim
+FROM python:3.10.14-slim-bookworm
 
-RUN apt-get update && apt-get install -y python3-pip
+RUN apt-get update && \
+    apt-get install -y\
+    python3-dev
+
 
 # Set working directory
 WORKDIR /app
@@ -10,7 +13,7 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose Flask port
 EXPOSE 5000
