@@ -5,7 +5,6 @@ RUN apt-get update && \
     apt-get install -y\
     python3-dev
 
-    
 # Set working directory
 WORKDIR /app
 
