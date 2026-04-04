@@ -1,50 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ACEest Fitness v2</title>
+    <title>ACEest Fitness v3</title>
+    <style>
+        body {
+            background: #1a1a1a;
+            color: white;
+            font-family: Arial;
+        }
+        .container {
+            display: flex;
+        }
+        .left, .right {
+            padding: 20px;
+        }
+        .left {
+            width: 30%;
+        }
+        .right {
+            width: 70%;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            background: #333;
+            color: white;
+            border: none;
+        }
+        button {
+            background: gold;
+            padding: 10px;
+            border: none;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid white;
+            padding: 8px;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1>ACEest Functional Fitness System</h1>
+<h1>ACEest FUNCTIONAL FITNESS SYSTEM v3</h1>
 
+<div class="container">
+
+<!-- LEFT PANEL -->
+<div class="left">
 <form method="POST">
-    Name: <input type="text" name="name"><br><br>
-    Age: <input type="number" name="age"><br><br>
-    Weight: <input type="number" name="weight"><br><br>
+    <h3>Client Profile</h3>
+
+    Name:
+    <input type="text" name="name">
+
+    Age:
+    <input type="number" name="age">
+
+    Weight:
+    <input type="number" name="weight">
 
     Program:
     <select name="program">
         {% for p in programs %}
         <option value="{{p}}">{{p}}</option>
         {% endfor %}
-    </select><br><br>
+    </select>
 
-    Adherence:
-    <input type="number" name="adherence" min="0" max="100"><br><br>
-
-    Notes:
-    <input type="text" name="notes"><br><br>
+    Adherence (%):
+    <input type="number" name="adherence">
 
     <button type="submit">Submit</button>
 </form>
+</div>
 
-<hr>
+<!-- RIGHT PANEL -->
+<div class="right">
 
-<h2>Workout Plan</h2>
-<p>{{ workout }}</p>
+<h3>Workout Plan</h3>
+<pre>{{ workout }}</pre>
 
-<h2>Diet Plan</h2>
-<p>{{ diet }}</p>
+<h3>Diet Plan</h3>
+<pre>{{ diet }}</pre>
 
-<h2>Calories</h2>
+<h3>Calories</h3>
 <p>{{ calories }}</p>
 
 <hr>
 
-<h2>Client List</h2>
-<table border="1">
+<h3>Clients</h3>
+<table>
 <tr>
-    <th>Name</th><th>Age</th><th>Weight</th><th>Program</th><th>Adherence</th><th>Notes</th>
+    <th>Name</th><th>Age</th><th>Weight</th><th>Program</th><th>Adherence</th>
 </tr>
 
 {% for c in clients %}
@@ -54,11 +106,13 @@
     <td>{{c[2]}}</td>
     <td>{{c[3]}}</td>
     <td>{{c[4]}}</td>
-    <td>{{c[5]}}</td>
 </tr>
 {% endfor %}
 
 </table>
+
+</div>
+</div>
 
 </body>
 </html>
