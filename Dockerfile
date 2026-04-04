@@ -1,21 +1,19 @@
-# Use official Python image (already has python + pip)
+# Use lightweight Python image
 FROM python:3.10-slim
+
+RUN apt-get update && apt-get install -y python3-pip
 
 # Set working directory
 WORKDIR /app
 
-# Copy project files
+# Copy files
 COPY . .
 
 # Install dependencies
-RUN python -m pip install --upgrade pip
-RUN python -m pip install --no-cache-dir -r requirements.txt
-
-# Run tests (optional but good for CI)
-RUN python -m pytest || true
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Expose Flask port
 EXPOSE 5000
 
-# Run Flask app
-CMD ["python", "app.py"]
+# Run app
+CMD ["python", "main.py"]
