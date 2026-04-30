@@ -1,3 +1,23 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: aceest-app
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: aceest
+#   template:
+#     metadata:
+#       labels:
+#         app: aceest
+#     spec:
+#       containers:
+#       - name: aceest
+#         image: # bits2027vimal/aceest:latest
+#         ports:
+#         - containerPort: 5000
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,6 +34,6 @@ spec:
     spec:
       containers:
       - name: aceest
-        image: bits2027vimal/aceest:latest
+        image: aceest-app
         ports:
         - containerPort: 5000
