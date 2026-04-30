@@ -43,7 +43,6 @@ Protein Target: 120g/day""",
 
 clients = []
 
-
 @app.route("/", methods=["GET", "POST"])
 def home():
     workout = ""
